@@ -1,0 +1,7 @@
+steps:
+  - command: docker build -f runner/Dockerfile . -t buildkite-cuda-runner
+  - command: pytest test_numba.py
+    plugins:
+      uw-ipd/docker:
+        image: "buildkite-cuda-runner"
+        runtime: "nvidia"
