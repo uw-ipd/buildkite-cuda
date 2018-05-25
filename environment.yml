@@ -1,0 +1,10 @@
+channels:
+  - pytorch
+dependencies:
+  - python=3.6
+  - ipython
+  - numba
+  #- pytorch 
+  - cuda91
+  - cudatoolkit
+  - pytest
