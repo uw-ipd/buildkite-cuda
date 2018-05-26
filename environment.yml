@@ -4,7 +4,7 @@ dependencies:
   - python=3.6
   - ipython
   - numba
-  #- pytorch 
+  - pytorch 
   - cuda91
   - cudatoolkit
   - pytest
