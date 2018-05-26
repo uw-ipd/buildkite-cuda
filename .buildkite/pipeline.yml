@@ -1,12 +1,12 @@
 steps:
-  - command: docker build -f runner/Dockerfile . -t buildkite-cuda-runner
+  - command: docker build -f runner/Dockerfile . -t buildkite-cuda-runner:${BUILDKITE_JOB_ID} -t buildkite-cuda-runner:${BUILDKITE_COMMIT}
   - command: nvidia-smi
     plugins:
       uw-ipd/docker:
-        image: "buildkite-cuda-runner"
         runtime: "nvidia"
+        image: "buildkite-cuda-runner:${BUILDKITE_JOB_ID}"
   - command: pytest test_numba.py
     plugins:
       uw-ipd/docker:
-        image: "buildkite-cuda-runner"
         runtime: "nvidia"
+        image: "buildkite-cuda-runner:${BUILDKITE_JOB_ID}"
