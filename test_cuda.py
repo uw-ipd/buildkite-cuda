@@ -1,8 +1,8 @@
-def test_cuda_is_available():
+def test_numba_cuda_is_available():
     import numba.cuda
     assert numba.cuda.is_available()
 
-def test_cuda_smoke():
+def test_numba_cuda_smoke():
     import math
     import numba.cuda as cuda
     import numpy
@@ -30,3 +30,18 @@ def test_cuda_smoke():
     matmul[blockspergrid, threadsperblock](a, b, c)
 
     numpy.testing.assert_allclose(a @ b, c)
+
+def test_torch_cuda_is_available():
+    import torch
+    assert torch.cuda.is_available()
+
+def test_torch_cuda_smoke():
+    import torch
+
+    rs = (100, 100)
+    a = torch.rand(rs)
+    b = torch.rand(rs)
+
+    c = a.cuda() @ b.cuda()
+
+    torch.testing.assert_allclose(a @ b, c.cpu())

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker build -f runner/Dockerfile . -t buildkite-cuda-runner
+docker build -f .buildkite/runner/Dockerfile . -t buildkite-cuda-runner
 docker run -v `pwd`/test_numba.py:/test_numba.py:ro -it --runtime=nvidia buildkite-cuda-runner nvidia-smi
-docker run -v `pwd`/test_numba.py:/test_numba.py:ro -it --runtime=nvidia buildkite-cuda-runner pytest test_numba.py
+docker run -v `pwd`/test_numba.py:/test_numba.py:ro -it --runtime=nvidia buildkite-cuda-runner pytest test_cuda.py

@@ -6,7 +6,7 @@ steps:
       - echo "--- nvidia-smi"
       - nvidia-smi
       - echo "--- pytest"
-      - pytest test_numba.py
+      - pytest test_cuda.py
     plugins:
       uw-ipd/docker:
         runtime: "nvidia"
