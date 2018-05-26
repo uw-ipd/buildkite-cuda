@@ -1,6 +1,6 @@
 steps:
   - label: ':hammer: Build Runner Image'
-    command: docker build -f runner/Dockerfile . -t buildkite-cuda-runner:${BUILDKITE_JOB_ID} -t buildkite-cuda-runner:${BUILDKITE_COMMIT}
+    command: docker build -f .buildkite/runner/Dockerfile . -t buildkite-cuda-runner:${BUILDKITE_JOB_ID} -t buildkite-cuda-runner:${BUILDKITE_COMMIT}
   - label: ':shrug: Test'
     command:
       - echo "--- nvidia-smi"
